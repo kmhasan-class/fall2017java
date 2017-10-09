@@ -28,9 +28,11 @@ public class Lab1 {
         // find the minimum of an array of numbers
         int numbers[] = {13, 4, 5, 2, 3, 1, 3};
         
-        int min = 0;
+        int min = numbers[0];
         
-        // ADD YOUR CODE HERE
+        for (int i = 1; i < numbers.length; i++)
+            if (numbers[i] < min)
+                min = numbers[i];
         
         System.out.printf("Minimum: %d\n", min);
     }
@@ -46,6 +48,20 @@ public class Lab1 {
         System.out.printf("Maximum: %d\n", max);
     }
     
+    // Homework
+    public static void task4() {
+        // find out the standard deviation of the following
+        // array of numbers
+        // Reference: https://en.wikipedia.org/wiki/Standard_deviation
+        // Hint: to find out square root of 5, we type Math.sqrt(5)
+        int numbers[] = {13, 4, 5, 2, 3, 1, 3};
+        
+        double stddev = 0.0;
+        
+        // ADD YOUR CODE HERE
+        
+        System.out.printf("Standard deviation: %.2f\n", stddev);
+    }
     /**
      * @param args the command line arguments
      */
@@ -53,6 +69,7 @@ public class Lab1 {
        task1();
        task2();
        task3();
+       task4();
     }
     
 }
