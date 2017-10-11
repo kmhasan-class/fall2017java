@@ -79,7 +79,7 @@ public class Lab1 {
         // find the maximum distance between a pair of numbers
         int numbers[] = {13, 4, 5, 2, 3, 1, 3};
         
-        double largestDistance = 0.0;
+        int largestDistance = 0;
         
         // ADD YOUR CODE HERE
         // Hint: find max and min and then subtract
