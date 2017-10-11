@@ -68,9 +68,13 @@ public class Lab1 {
         int numbers[] = {13, 4, 5, 2, 3, 1, 3};
         
         double geommean = 0.0;
+        double product = 1;
+        for (int i = 0; i < numbers.length; i++)
+            product = product * numbers[i];
         
+        geommean = Math.pow(product, (double) 1 / numbers.length);
         // ADD YOUR CODE HERE
-        // Hint: use Math.power(x, y) to compute x^y
+        // Hint: use Math.pow(x, y) to compute x^y
         System.out.printf("Geometric mean: %.2f\n", geommean);
 
     }
@@ -80,7 +84,13 @@ public class Lab1 {
         int numbers[] = {13, 4, 5, 2, 3, 1, 3};
         
         int largestDistance = 0;
-        
+        int min = numbers[0];
+        int max = numbers[0];
+        for (int i = 1; i < numbers.length; i++) {
+            min = Math.min(min, numbers[i]);
+            max = Math.max(max, numbers[i]);
+        }
+        largestDistance = max - min;
         // ADD YOUR CODE HERE
         // Hint: find max and min and then subtract
         System.out.printf("Largest distance: %d\n", largestDistance);
