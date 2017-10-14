@@ -19,9 +19,10 @@ import javafx.scene.control.TextField;
  * @author kmhasan
  */
 public class FXMLDocumentController implements Initializable {
+
     String operation;
-    int number1;
-    int number2;
+    double number1;
+    double number2;
     /*
     MVC - Model, View, Controller
      */
@@ -77,7 +78,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void handleAddAction(ActionEvent event) {
         String oldText = displayField.getText();
-        number1 = Integer.parseInt(oldText);
+        number1 = Double.parseDouble(oldText);
         operation = "ADD";
         displayField.clear();
     }
@@ -85,17 +86,39 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void handleEqualAction(ActionEvent event) {
         String oldText = displayField.getText();
-        number2 = Integer.parseInt(oldText);
-        
+        number2 = Double.parseDouble(oldText);
+
+        double result;
         switch (operation) {
             case "ADD":
-                int result = number1 + number2;
+                result = number1 + number2;
                 displayField.setText("" + result);
                 break;
             case "SUBTRACT":
                 break;
+            case "DIVIDE":
+                result = number1 / number2;
+                displayField.setText("" + result);
+                break;
             default:
                 break;
+        }
+    }
+
+    @FXML
+    private void handleDivideAction(ActionEvent event) {
+        String oldText = displayField.getText();
+        number1 = Double.parseDouble(oldText);
+        operation = "DIVIDE";
+        displayField.clear();
+    }
+
+    @FXML
+    private void handleDotAction(ActionEvent event) {
+        String oldText = displayField.getText();
+        if (!oldText.contains(".")) {
+            String newText = oldText + ".";
+            displayField.setText(newText);
         }
     }
 
