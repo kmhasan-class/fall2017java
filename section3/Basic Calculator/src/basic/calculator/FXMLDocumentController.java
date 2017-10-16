@@ -34,6 +34,9 @@ public class FXMLDocumentController implements Initializable {
         // TODO
     }
 
+    // write methods for other digit buttons
+    // and other operations (+, -, x, /)
+    
     @FXML
     private void handleOneAction(ActionEvent event) {
         String oldText = displayField.getText();
@@ -77,6 +80,9 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void handleAddAction(ActionEvent event) {
+        // Update your code to show the result of
+        // partial computation
+        // for example: 1 + 2 + 3 = 6
         String oldText = displayField.getText();
         number1 = Double.parseDouble(oldText);
         operation = "ADD";
@@ -120,6 +126,20 @@ public class FXMLDocumentController implements Initializable {
             String newText = oldText + ".";
             displayField.setText(newText);
         }
+    }
+
+    @FXML
+    private void handleZeroAction(ActionEvent event) {
+        // Handle it the same way as for other digits
+        // Except for leading zeroes for integers must be avoided
+        // For floating point numbers there can be one leading zero but not more
+        // Hint: use startsWith method in the String class
+    }
+
+    @FXML
+    private void handleSqrtAction(ActionEvent event) {
+        // Compute the square root
+        // Hint: use Math.sqrt method
     }
 
 }

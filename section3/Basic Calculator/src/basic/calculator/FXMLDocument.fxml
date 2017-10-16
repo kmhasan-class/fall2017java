@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="245.0" prefWidth="205.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="basic.calculator.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="243.0" prefWidth="235.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="basic.calculator.FXMLDocumentController">
    <children>
       <GridPane prefHeight="200.0" prefWidth="400.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
         <columnConstraints>
@@ -31,24 +31,25 @@
                   <Insets bottom="10.0" />
                </GridPane.margin>
             </TextField>
-            <Button maxHeight="30.0" maxWidth="40.0" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleOneAction" prefHeight="30.0" prefWidth="40.0" text="1" GridPane.rowIndex="4" />
-            <Button maxHeight="30.0" maxWidth="40.0" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleTwoAction" prefHeight="30.0" prefWidth="40.0" text="2" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Button maxHeight="30.0" maxWidth="40.0" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleAllClearAction" prefHeight="30.0" prefWidth="40.0" text="AC" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Button maxHeight="30.0" maxWidth="40.0" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleClearAction" prefHeight="30.0" prefWidth="40.0" text="C" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button maxHeight="30.0" maxWidth="40.0" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleThreeAction" prefHeight="30.0" prefWidth="40.0" text="3" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Button maxHeight="30.0" maxWidth="40.0" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleTwoAction" prefHeight="30.0" prefWidth="40.0" text="4" GridPane.rowIndex="3" />
-            <Button maxHeight="30.0" maxWidth="40.0" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleTwoAction" prefHeight="30.0" prefWidth="40.0" text="5" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Button maxHeight="30.0" maxWidth="40.0" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleTwoAction" prefHeight="30.0" prefWidth="40.0" text="6" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Button maxHeight="30.0" maxWidth="40.0" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleTwoAction" prefHeight="30.0" prefWidth="40.0" text="7" GridPane.rowIndex="2" />
-            <Button maxHeight="30.0" maxWidth="40.0" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleTwoAction" prefHeight="30.0" prefWidth="40.0" text="8" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button maxHeight="30.0" maxWidth="40.0" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleTwoAction" prefHeight="30.0" prefWidth="40.0" text="9" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Button maxHeight="30.0" maxWidth="40.0" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleTwoAction" prefHeight="30.0" prefWidth="40.0" text="0" GridPane.rowIndex="5" />
-            <Button maxHeight="30.0" maxWidth="40.0" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleDotAction" prefHeight="30.0" prefWidth="40.0" text="." GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Button maxHeight="30.0" maxWidth="40.0" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleEqualAction" prefHeight="30.0" prefWidth="40.0" text="=" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <Button maxHeight="70.0" maxWidth="40.0" minHeight="70.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleAddAction" prefHeight="70.0" prefWidth="40.0" text="+" GridPane.columnIndex="3" GridPane.rowIndex="4" GridPane.rowSpan="2147483647" />
-            <Button maxHeight="30.0" maxWidth="40.0" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleTwoAction" prefHeight="30.0" prefWidth="40.0" text="-" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <Button maxHeight="30.0" maxWidth="40.0" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleTwoAction" prefHeight="30.0" prefWidth="40.0" text="x" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <Button maxHeight="30.0" maxWidth="40.0" minHeight="30.0" minWidth="40.0" mnemonicParsing="false" onAction="#handleDivideAction" prefHeight="30.0" prefWidth="40.0" text="/" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Button maxHeight="30.0" maxWidth="45.0" minHeight="30.0" minWidth="45.0" mnemonicParsing="false" onAction="#handleOneAction" prefHeight="30.0" prefWidth="45.0" text="1" GridPane.rowIndex="4" />
+            <Button maxHeight="30.0" maxWidth="45.0" minHeight="30.0" minWidth="45.0" mnemonicParsing="false" onAction="#handleTwoAction" prefHeight="30.0" prefWidth="45.0" text="2" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button maxHeight="30.0" maxWidth="45.0" minHeight="30.0" minWidth="45.0" mnemonicParsing="false" onAction="#handleAllClearAction" prefHeight="30.0" prefWidth="45.0" text="AC" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button maxHeight="30.0" maxWidth="45.0" minHeight="30.0" minWidth="45.0" mnemonicParsing="false" onAction="#handleClearAction" prefHeight="30.0" prefWidth="45.0" text="C" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button maxHeight="30.0" maxWidth="45.0" minHeight="30.0" minWidth="45.0" mnemonicParsing="false" onAction="#handleThreeAction" prefHeight="30.0" prefWidth="45.0" text="3" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Button maxHeight="30.0" maxWidth="45.0" minHeight="30.0" minWidth="45.0" mnemonicParsing="false" onAction="#handleTwoAction" prefHeight="30.0" prefWidth="45.0" text="4" GridPane.rowIndex="3" />
+            <Button maxHeight="30.0" maxWidth="45.0" minHeight="30.0" minWidth="45.0" mnemonicParsing="false" onAction="#handleTwoAction" prefHeight="30.0" prefWidth="45.0" text="5" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button maxHeight="30.0" maxWidth="45.0" minHeight="30.0" minWidth="45.0" mnemonicParsing="false" onAction="#handleTwoAction" prefHeight="30.0" prefWidth="45.0" text="6" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Button maxHeight="30.0" maxWidth="45.0" minHeight="30.0" minWidth="45.0" mnemonicParsing="false" onAction="#handleTwoAction" prefHeight="30.0" prefWidth="45.0" text="7" GridPane.rowIndex="2" />
+            <Button maxHeight="30.0" maxWidth="45.0" minHeight="30.0" minWidth="45.0" mnemonicParsing="false" onAction="#handleTwoAction" prefHeight="30.0" prefWidth="45.0" text="8" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button maxHeight="30.0" maxWidth="45.0" minHeight="30.0" minWidth="45.0" mnemonicParsing="false" onAction="#handleTwoAction" prefHeight="30.0" prefWidth="45.0" text="9" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button maxHeight="30.0" maxWidth="45.0" minHeight="30.0" minWidth="45.0" mnemonicParsing="false" onAction="#handleZeroAction" prefHeight="30.0" prefWidth="45.0" text="0" GridPane.rowIndex="5" />
+            <Button maxHeight="30.0" maxWidth="45.0" minHeight="30.0" minWidth="45.0" mnemonicParsing="false" onAction="#handleDotAction" prefHeight="30.0" prefWidth="45.0" text="." GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Button maxHeight="30.0" maxWidth="45.0" minHeight="30.0" minWidth="45.0" mnemonicParsing="false" onAction="#handleEqualAction" prefHeight="30.0" prefWidth="45.0" text="=" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <Button maxHeight="70.0" maxWidth="45.0" minHeight="70.0" minWidth="45.0" mnemonicParsing="false" onAction="#handleAddAction" prefHeight="70.0" prefWidth="45.0" text="+" GridPane.columnIndex="3" GridPane.rowIndex="4" GridPane.rowSpan="2147483647" />
+            <Button maxHeight="30.0" maxWidth="45.0" minHeight="30.0" minWidth="45.0" mnemonicParsing="false" onAction="#handleTwoAction" prefHeight="30.0" prefWidth="45.0" text="-" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Button maxHeight="30.0" maxWidth="45.0" minHeight="30.0" minWidth="45.0" mnemonicParsing="false" onAction="#handleTwoAction" prefHeight="30.0" prefWidth="45.0" text="x" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Button maxHeight="30.0" maxWidth="45.0" minHeight="30.0" minWidth="45.0" mnemonicParsing="false" onAction="#handleDivideAction" prefHeight="30.0" prefWidth="45.0" text="/" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Button maxHeight="30.0" maxWidth="45.0" minHeight="30.0" minWidth="45.0" mnemonicParsing="false" onAction="#handleSqrtAction" prefHeight="30.0" prefWidth="45.0" text="sqrt" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </children>
