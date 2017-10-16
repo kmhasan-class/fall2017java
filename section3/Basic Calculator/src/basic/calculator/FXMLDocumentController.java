@@ -23,6 +23,8 @@ public class FXMLDocumentController implements Initializable {
     String operation;
     double number1;
     double number2;
+    boolean hasPartialComputation = false;
+
     /*
     MVC - Model, View, Controller
      */
@@ -36,7 +38,6 @@ public class FXMLDocumentController implements Initializable {
 
     // write methods for other digit buttons
     // and other operations (+, -, x, /)
-    
     @FXML
     private void handleOneAction(ActionEvent event) {
         String oldText = displayField.getText();
@@ -80,17 +81,46 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void handleAddAction(ActionEvent event) {
-        // Update your code to show the result of
-        // partial computation
-        // for example: 1 + 2 + 3 = 6
-        String oldText = displayField.getText();
-        number1 = Double.parseDouble(oldText);
-        operation = "ADD";
-        displayField.clear();
+        if (!hasPartialComputation) {
+            String oldText = displayField.getText();
+            number1 = Double.parseDouble(oldText);
+            operation = "ADD";
+            displayField.clear();
+            hasPartialComputation = true;
+        } else {
+            String oldText = displayField.getText();
+            number2 = Double.parseDouble(oldText);
+
+            double result = 0;
+            switch (operation) {
+                case "ADD":
+                    result = number1 + number2;
+                    displayField.setText("" + result);
+                    break;
+                case "SUBTRACT":
+                    result = number1 - number2;
+                    displayField.setText("" + result);
+                    break;
+                case "DIVIDE":
+                    result = number1 / number2;
+                    displayField.setText("" + result);
+                    break;
+                case "MULTIPLY":
+                    result = number1 * number2;
+                    displayField.setText("" + result);
+                    break;
+                default:
+                    break;
+            }
+            hasPartialComputation = false;
+        }
     }
 
     @FXML
     private void handleEqualAction(ActionEvent event) {
+        if (operation == null)
+            return;
+        
         String oldText = displayField.getText();
         number2 = Double.parseDouble(oldText);
 
@@ -101,9 +131,15 @@ public class FXMLDocumentController implements Initializable {
                 displayField.setText("" + result);
                 break;
             case "SUBTRACT":
+                result = number1 - number2;
+                displayField.setText("" + result);
                 break;
             case "DIVIDE":
                 result = number1 / number2;
+                displayField.setText("" + result);
+                break;
+            case "MULTIPLY":
+                result = number1 * number2;
                 displayField.setText("" + result);
                 break;
             default:
