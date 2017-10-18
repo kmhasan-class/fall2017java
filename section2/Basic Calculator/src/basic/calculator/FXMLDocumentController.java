@@ -31,7 +31,7 @@ public class FXMLDocumentController implements Initializable {
     Lab task
     Modify the data types to allow for floating point
     calculations. Just change int to double!
-    */
+     */
     int operand1;
     int operand2;
     String operator;
@@ -86,7 +86,7 @@ public class FXMLDocumentController implements Initializable {
         Lab Task
         When you're reading numbers, you should read double
         Hint: Double.parseDouble
-        */
+         */
         operand1 = Integer.parseInt(displayField.getText());
         operator = "SUBTRACT";
         displayField.setText("");
@@ -94,6 +94,8 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void handleEqualAction(ActionEvent event) {
+        if (operator == null)
+            return;
         operand2 = Integer.parseInt(displayField.getText());
         int result = 0;
         switch (operator) {
@@ -103,13 +105,13 @@ public class FXMLDocumentController implements Initializable {
             case "SUBTRACT":
                 result = operand1 - operand2;
                 break;
-                /*
+            /*
                 Lab Task
                 Add support for MULTIPLY and DIVIDE
                 Also for unary operations like SQRT and SQR
                 Hint: for SQRT use Math.sqrt
                 for SQR just multiply the number by itself
-                */
+             */
         }
         displayField.setText("" + result);
     }
@@ -131,11 +133,11 @@ public class FXMLDocumentController implements Initializable {
         only when it is followed by a dot
         Hint: use the startsWith method (look at the Java API)
         https://docs.oracle.com/javase/7/docs/api/java/lang/String.html
-        */
+         */
         String oldText = displayField.getText();
         // string concatenation
         String newText = oldText + "0";
-        displayField.setText(newText);        
+        displayField.setText(newText);
     }
 
     @FXML
@@ -145,7 +147,12 @@ public class FXMLDocumentController implements Initializable {
         Clear the rightmost digit
         Hint: use the substring method from the String class
         (again, look at the String API)
-        */
+         */
+        String oldText = displayField.getText();
+        if (oldText.length() > 0) {
+            String newText = oldText.substring(0, oldText.length() - 1);
+            displayField.setText(newText);
+        }
     }
 
     @FXML
@@ -157,5 +164,5 @@ public class FXMLDocumentController implements Initializable {
     /*
     Lab Task
     Write code for all the remaining buttons
-    */
+     */
 }
