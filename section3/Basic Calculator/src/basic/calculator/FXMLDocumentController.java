@@ -20,6 +20,11 @@ import javafx.scene.control.TextField;
  */
 public class FXMLDocumentController implements Initializable {
 
+    /*
+    Task for future:
+    Try to modify your calculator to work with
+    BigInteger and BigDecimal
+    */
     String operation;
     double number1;
     double number2;
