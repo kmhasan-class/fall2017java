@@ -32,9 +32,10 @@ public class FXMLDocumentController implements Initializable {
     Modify the data types to allow for floating point
     calculations. Just change int to double!
      */
-    int operand1;
-    int operand2;
+    double operand1;
+    double operand2;
     String operator;
+    boolean pendingOperation = false;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -44,7 +45,18 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void handleOneAction(ActionEvent event) {
         String oldText = displayField.getText();
-        // string concatenation
+        if (oldText.startsWith("0") && !oldText.startsWith("0.")) {
+            int count = 0;
+            for (int i = 0; i < oldText.length(); i++) {
+                if (oldText.charAt(i) == '0') {
+                    count++;
+                } else {
+                    break;
+                }
+            }
+
+            oldText = oldText.substring(count);
+        }
         String newText = oldText + "1";
         displayField.setText(newText);
     }
@@ -52,7 +64,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void handleTwoAction(ActionEvent event) {
         String oldText = displayField.getText();
-        // string concatenation
+        oldText = removeLeadingZeroes(oldText);
         String newText = oldText + "2";
         displayField.setText(newText);
     }
@@ -60,7 +72,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void handleThreeAction(ActionEvent event) {
         String oldText = displayField.getText();
-        // string concatenation
+        oldText = removeLeadingZeroes(oldText);
         String newText = oldText + "3";
         displayField.setText(newText);
     }
@@ -68,16 +80,36 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void handleFourAction(ActionEvent event) {
         String oldText = displayField.getText();
-        // string concatenation
+        oldText = removeLeadingZeroes(oldText);
         String newText = oldText + "4";
         displayField.setText(newText);
     }
 
     @FXML
     private void handleAdditionAction(ActionEvent event) {
-        operand1 = Integer.parseInt(displayField.getText());
-        operator = "ADD";
-        displayField.setText("");
+        if (pendingOperation) {
+            if (operator == null) {
+                return;
+            }
+            operand2 = Double.parseDouble(displayField.getText());
+            double result = 0;
+            switch (operator) {
+                case "ADD":
+                    result = operand1 + operand2;
+                    break;
+                case "SUBTRACT":
+                    result = operand1 - operand2;
+                    break;
+            }
+            operand1 = result;
+            displayField.setText("" + result);
+            pendingOperation = false;
+        } else {
+            operand1 = Double.parseDouble(displayField.getText());
+            operator = "ADD";
+            displayField.setText("");
+            pendingOperation = true;
+        }
     }
 
     @FXML
@@ -87,17 +119,18 @@ public class FXMLDocumentController implements Initializable {
         When you're reading numbers, you should read double
         Hint: Double.parseDouble
          */
-        operand1 = Integer.parseInt(displayField.getText());
+        operand1 = Double.parseDouble(displayField.getText());
         operator = "SUBTRACT";
         displayField.setText("");
     }
 
     @FXML
     private void handleEqualAction(ActionEvent event) {
-        if (operator == null)
+        if (operator == null) {
             return;
-        operand2 = Integer.parseInt(displayField.getText());
-        int result = 0;
+        }
+        operand2 = Double.parseDouble(displayField.getText());
+        double result = 0;
         switch (operator) {
             case "ADD":
                 result = operand1 + operand2;
@@ -125,6 +158,22 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    public String removeLeadingZeroes(String oldText) {
+        if (oldText.startsWith("0") && !oldText.startsWith("0.")) {
+            int count = 0;
+            for (int i = 0; i < oldText.length(); i++) {
+                if (oldText.charAt(i) == '0') {
+                    count++;
+                } else {
+                    break;
+                }
+            }
+
+            oldText = oldText.substring(count);
+        }
+        return oldText;
+    }
+
     @FXML
     private void handleZeroAction(ActionEvent event) {
         /*
@@ -135,7 +184,7 @@ public class FXMLDocumentController implements Initializable {
         https://docs.oracle.com/javase/7/docs/api/java/lang/String.html
          */
         String oldText = displayField.getText();
-        // string concatenation
+        oldText = removeLeadingZeroes(oldText);
         String newText = oldText + "0";
         displayField.setText(newText);
     }
