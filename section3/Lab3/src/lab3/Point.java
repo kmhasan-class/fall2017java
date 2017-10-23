@@ -14,9 +14,9 @@ public class Point {
     private double y;
     
     // Constructor
-    public Point(double nx, double ny) {
-        x = nx;
-        y = ny;
+    public Point(double x, double y) {
+        this.x = x;
+        this.y = y;
     }
     
     public void translate(double h, double k) {
@@ -27,6 +27,12 @@ public class Point {
     public void rotate(double thetaInDegrees) {
         // ADD YOUR CODE HERE
         // Hint: use Math.cos(theta) for cos function
+        double theta = Math.toRadians(thetaInDegrees);
+        //theta = thetaInDegrees * Math.PI / 180.0;
+        double xp = x * Math.cos(theta) - y * Math.sin(theta);
+        double yp = x * Math.sin(theta) + y * Math.cos(theta);
+        x = xp;
+        y = yp;
     }
     
     public void scale(double sx, double sy) {
@@ -42,7 +48,7 @@ public class Point {
     }
     
     public String toString() {
-        return "(" + this.x + ", " + this.y + ")";
+        return "(" + x + ", " + y + ")";
     }
 
 }
