@@ -19,6 +19,10 @@ public class ComplexNumber {
         imaginary = i;
     }
     
+    public ComplexNumber() {
+        
+    }
+    
     public ComplexNumber add(ComplexNumber b) {
         ComplexNumber a = this;
         
