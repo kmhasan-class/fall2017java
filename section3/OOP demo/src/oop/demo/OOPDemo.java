@@ -15,6 +15,7 @@ public class OOPDemo {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        /*
         ComplexNumber a = new ComplexNumber(5, 9);
         ComplexNumber b = new ComplexNumber(6, -3);
         
@@ -31,6 +32,15 @@ public class OOPDemo {
         
         c = a.multiply(b);
         System.out.println("a x b = " + c);
+*/
+        boolean isSuccessful;
+        BankAccount a = new BankAccount(3001, "Md. Rakibul Hasan", "loverboy420@yahoo.com", 5000.0);
+        isSuccessful = a.deposit(-4000);
+        System.out.println("Deposit successful = " + isSuccessful);
+        isSuccessful = a.withdraw(100);
+        System.out.println("Withdraw successful = " + isSuccessful);
+        a.withdraw(a.getBalance());
+        System.out.println(a);
     }
     
 }
