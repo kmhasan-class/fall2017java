@@ -15,12 +15,24 @@ public class OOPDemo {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        RationalNumber a = new RationalNumber(2, 5);
-        RationalNumber b = new RationalNumber(3, 2);
-        RationalNumber c = a.add(b);
+        RationalNumber a; // declaration
+        a = new RationalNumber(2, 3); // memory allocation/ instantiation
+        // We get the memory from the "Heap"
+        RationalNumber b = new RationalNumber(3, 4);
+        RationalNumber c;
+        
+                
         System.out.println("A: " + a);
         System.out.println("B: " + b);
-        System.out.println("Result: " + c);
+
+        c = a.multiply(b);
+        System.out.println("Multiply: " + c);
+        System.out.println("After reduction: " + c.reduce());
+        
+        c = a.add(b);
+        System.out.println("Add: " + c);
+        System.out.println("After reduction: " + c.reduce());
+        
     }
-    
+ 
 }

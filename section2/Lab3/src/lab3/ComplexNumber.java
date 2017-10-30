@@ -44,8 +44,9 @@ public class ComplexNumber {
     }
     
     public ComplexNumber divide(ComplexNumber b) {
-        // ADD YOUR CODE HERE
-        return null;
+        ComplexNumber n = this.multiply(new ComplexNumber(b.real, -b.imaginary));
+        double d = b.real * b.real + b.imaginary * b.imaginary;
+        return new ComplexNumber(n.real / d, n.imaginary / d);
     }
     
     public String toString() {
