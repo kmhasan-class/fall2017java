@@ -15,6 +15,7 @@ public class OOPDemo {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        /*
         RationalNumber a; // declaration
         a = new RationalNumber(2, 3); // memory allocation/ instantiation
         // We get the memory from the "Heap"
@@ -32,7 +33,16 @@ public class OOPDemo {
         c = a.add(b);
         System.out.println("Add: " + c);
         System.out.println("After reduction: " + c.reduce());
+        */
+        String s = "hello";
+        String t = s.toUpperCase();
         
+        BankAccount a = new BankAccount(45, "John Doe", 1000);
+        //BankAccount a = new BankAccount();
+        a.deposit(1000);
+        a.withdraw(40);
+        //a.balance = 0;
+        System.out.println(a);
     }
  
 }
