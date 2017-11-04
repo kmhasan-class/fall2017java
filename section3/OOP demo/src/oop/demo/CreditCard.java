@@ -5,30 +5,29 @@
  */
 package oop.demo;
 
+import account.BankAccount;
+
 /**
  *
  * @author kmhasan
  */
-public class BankAccount {
+public class CreditCard extends BankAccount {
+    // access modifiers: private, protected, public
+    private double creditLimit;
 
-    private int accountId;
-    private String accountName;
-    private String emailAddress;
-    private double balance;
-
-    public BankAccount(int accountId,
+    public CreditCard(int accountId,
             String accountName,
             String emailAddress,
-            double balance) {
-        this.accountId = accountId;
-        this.accountName = accountName;
-        this.emailAddress = emailAddress;
-        this.balance = balance;
+            double balance,
+            double creditLimit) {
+        super(accountId, accountName, emailAddress, balance);
+        this.creditLimit = creditLimit;
     }
 
+    @Override
     public boolean deposit(double amount) {
-        if (amount >= 0) {
-            balance = balance + amount;
+        if (super.deposit(amount)) {
+            creditLimit = creditLimit + amount;
             return true;
         } else {
             return false;
@@ -36,19 +35,17 @@ public class BankAccount {
     }
 
     public boolean withdraw(double amount) {
-        if (amount >= 0 && amount <= balance) {
+        if (amount >= 0 && amount <= creditLimit) {
             balance = balance - amount;
+            creditLimit = creditLimit - amount;
             return true;
         } else {
             return false;
         }
     }
-    
-    public double getBalance() {
-        return balance;
-    }
-    
+
+    @Override
     public String toString() {
-        return accountId + " " + accountName + " " + balance;
+        return super.toString() + " - " + creditLimit;
     }
 }
