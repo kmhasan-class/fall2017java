@@ -32,6 +32,7 @@ public class Lab5 {
         // ADD YOUR CODE HERE
         // method is supposed to find the maximum distance
         // between any pair of numbers
+        // Example [6, 3, 2, 9, 4] -> 7
         return 0;
     }
     
@@ -39,6 +40,10 @@ public class Lab5 {
         // ADD YOUR CODE HERE
         // method is supposed to count how many strings
         // are actually integers
+        // Hint: use charAt method on the string to
+        // check if all the characters are digits
+        // String s = "124ab";
+        // s.charAt(0) >= '0' && s.charAt(0) <= '9'
         return 0;
     }
     
@@ -54,7 +59,9 @@ public class Lab5 {
         ArrayList<String> stringList = new ArrayList<>();
         stringList.add("Apple");
         stringList.add("Banana");
+        stringList.add("125");
         stringList.add("Cranberry");
+        stringList.add("33");
         System.out.println(stringList);
         System.out.println(reverseList(stringList));
     }
