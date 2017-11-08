@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package oop.demo;
+package account;
 
 /**
  *
@@ -12,7 +12,7 @@ package oop.demo;
 public class BankAccount {
     private int accountId;
     private String accountName;
-    private double balance;
+    protected double balance;
     
     public BankAccount() {
         accountId = 0;

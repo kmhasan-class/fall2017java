@@ -1,0 +1,18 @@
+Fall 2017 Java Midterm Exam
+Question pattern and syllabus
+
+Syllabus: 
+1) all that's been covered in class
+2) all homeworks
+3) textbook chapters 1-3 from both the books and chapter 7 from JHTP 10th edition
+
+Question pattern:
+Theoretical questions from OOP concepts - 10 marks
+UI sketching for a given scenario - 5 marks
+UML class diagram designing and implementing that in Java - 10 marks
+Arrays/ArrayList related programming task - 5 marks
+
+You can bring a handwritten (not photocopied) A4 paper as cheat sheet. You need to write your name and ID on top right corner. I need to sign this paper before the exam starts.
+
+
+

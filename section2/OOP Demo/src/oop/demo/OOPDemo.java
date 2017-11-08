@@ -5,6 +5,9 @@
  */
 package oop.demo;
 
+import account.BankAccount;
+import account.CurrentAccount;
+
 /**
  *
  * @author kmhasan
@@ -43,6 +46,12 @@ public class OOPDemo {
         a.withdraw(40);
         //a.balance = 0;
         System.out.println(a);
+        
+        CurrentAccount b = new CurrentAccount(50, "Test", 1000);
+        b.deposit(1000);
+        b.withdraw(40);
+        System.out.println(b);
+                
     }
  
 }
