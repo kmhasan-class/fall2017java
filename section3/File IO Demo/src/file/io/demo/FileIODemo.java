@@ -78,11 +78,25 @@ public class FileIODemo {
         }
     }
     
+    public void writeToFile() {
+        try {
+            RandomAccessFile output = new RandomAccessFile("output.txt", "rw");
+            long length = output.length();
+            output.seek(length);
+            output.writeBytes("Hi\n");
+        } catch (FileNotFoundException fnfe) {
+            System.err.println("Cannot find output.txt");
+        } catch (IOException ioe) {
+            System.err.println("IOException occured");
+        }
+        System.out.println("Hello world");
+    }
+    
     public FileIODemo() {
         //readFromFile();
-        boolean same = isIdentical("input1.txt", "input2.txt");
-        System.out.println(same);
-        //writeToFile();
+        //boolean same = isIdentical("input1.txt", "input2.txt");
+        //System.out.println(same);
+        writeToFile();
     }
 
     /**
