@@ -5,7 +5,11 @@
  */
 package assignment.pkg1.demo;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -13,36 +17,96 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 /**
  *
  * @author kmhasan
  */
 public class FXMLDocumentController implements Initializable {
+
     @FXML
-    private ListView<String> listView;
-    private ObservableList<String> itemList;
+    private ListView<Todo> listView;
+    private ObservableList<Todo> itemList;
+    private ObservableList<String> todoList;
+    private ObservableList<String> completedList;
     @FXML
     private TextField itemField;
-    
+    @FXML
+    private DatePicker datePicker;
+    @FXML
+    private TextField titleField;
+    @FXML
+    private ListView<String> todoListView;
+    @FXML
+    private ListView<String> completedListView;
+
     @FXML
     public void handleAddItem(ActionEvent event) {
-        String itemName = itemField.getText();
-        itemList.add(itemName);
-        itemField.clear();
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         itemList = FXCollections.observableArrayList();
-        itemList.add("BLACK");
-        itemList.add("RED");
-        itemList.add("YELLOW");
+        todoList = FXCollections.observableArrayList();
+        completedList = FXCollections.observableArrayList();
         
         listView.setItems(itemList);
-    }    
-    
+        todoListView.setItems(todoList);
+        completedListView.setItems(completedList);
+        
+        try (RandomAccessFile input
+                = new RandomAccessFile("todolist.txt", "r")) {
+            while (true) {
+                String date = input.readLine();
+                if (date == null)
+                    break;
+                String title = input.readLine();
+                Todo todo = new Todo(LocalDate.parse(date), title);
+                itemList.add(todo);
+                String todoItem;
+                while ((todoItem = input.readLine()) != null) {
+                    if (todoItem.equals("#")) {
+                        break;
+                    }
+                    todo.getTodoItemList().add(todoItem);
+                    //System.out.println("Todo: " + todoItem);
+                }
+
+                String completedItem;
+                while ((completedItem = input.readLine()) != null) {
+                    if (completedItem.equals("##")) {
+                        break;
+                    }
+                    todo.getCompletedItemList().add(completedItem);
+                    //System.out.println("Completed: " + completedItem);
+                }
+                
+                //System.out.println(todo);
+            }
+        } catch (FileNotFoundException fnfe) {
+
+        } catch (IOException ioe) {
+
+        }
+        
+    }
+
+    @FXML
+    private void handleItemSelection(MouseEvent event) {
+        Todo todo = listView.getSelectionModel().getSelectedItem();
+        if (todo != null) {
+            titleField.setText(todo.getTitle());
+            datePicker.setValue(todo.getDate());
+            todoList.clear();
+            todoList.addAll(todo.getTodoItemList());
+            completedList.clear();
+            completedList.addAll(todo.getCompletedItemList());
+        }
+    }
+
 }
