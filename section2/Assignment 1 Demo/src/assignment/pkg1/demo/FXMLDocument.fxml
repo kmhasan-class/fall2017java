@@ -6,10 +6,50 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="321.0" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="assignment.pkg1.demo.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="281.0" prefWidth="646.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="assignment.pkg1.demo.FXMLDocumentController">
    <children>
-      <ListView fx:id="listView" layoutX="14.0" layoutY="14.0" onMouseClicked="#handleSelectItemAction" prefHeight="200.0" prefWidth="200.0" />
-      <ComboBox fx:id="comboBox" layoutX="14.0" layoutY="225.0" prefWidth="150.0" />
-      <TextField fx:id="fruitField" layoutX="14.0" layoutY="268.0" onAction="#handleAddFruitAction" />
+      <SplitPane dividerPositions="0.38509316770186336" layoutX="14.0" layoutY="14.0" prefHeight="321.0" prefWidth="424.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <items>
+            <AnchorPane prefHeight="279.0" prefWidth="265.0">
+               <children>
+                  <ListView fx:id="listView" onMouseClicked="#handleSelectItemAction" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane>
+               <children>
+                  <GridPane layoutX="14.0" layoutY="15.0" prefHeight="207.0" prefWidth="225.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="15.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="115.0" minWidth="10.0" prefWidth="115.0" />
+                      <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Date" />
+                        <Label text="Title" GridPane.rowIndex="1" />
+                        <Label text="Todo Tasks" GridPane.rowIndex="2" />
+                        <Label text="Completed Tasks" GridPane.rowIndex="3" />
+                        <DatePicker fx:id="datePicker" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="194.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" />
+                        <TextField fx:id="titleField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <ListView fx:id="todoListView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                          <content>
+                            <AnchorPane maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox fx:id="checkBoxVBox" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </ScrollPane>
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
    </children>
 </AnchorPane>

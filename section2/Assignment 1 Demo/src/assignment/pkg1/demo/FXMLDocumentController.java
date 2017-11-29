@@ -20,9 +20,14 @@ import javafx.scene.control.TextField;
 import java.io.RandomAccessFile;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
+
 /**
  *
  * @author kmhasan
@@ -30,43 +35,76 @@ import javafx.scene.input.MouseEvent;
 public class FXMLDocumentController implements Initializable {
 
     @FXML
-    private ListView<String> listView;
-    private ObservableList<String> todoList;
+    private ListView<Todo> listView;
+    private ObservableList<Todo> todoList;
     @FXML
-    private ComboBox<String> comboBox;
+    private DatePicker datePicker;
     @FXML
-    private TextField fruitField;
+    private TextField titleField;
+    @FXML
+    private ListView<String> todoListView;
+    private ObservableList<String> todoItemList;
+    @FXML
+    private VBox checkBoxVBox;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         todoList = FXCollections.observableArrayList();
+        todoItemList = FXCollections.observableArrayList();
+        
         try {
             RandomAccessFile input = new RandomAccessFile("todolist.txt", "r");
-            
-            String line;
-            while ((line = input.readLine()) != null) {
-                todoList.add(line);
+
+            while (true) {
+                String dateString = input.readLine();
+                if (dateString == null)
+                    break;
+                String titleString = input.readLine();
+                Todo t = new Todo(LocalDate.parse(dateString), titleString);
+
+                String line;
+                while ((line = input.readLine()) != null) {
+                    if (line.equals("#")) {
+                        break;
+                    }
+                    t.getTodoItemList().add(line);
+                }
+
+                while ((line = input.readLine()) != null) {
+                    if (line.equals("##")) {
+                        break;
+                    }
+                    t.getCompletedItemList().add(line);
+                }
+
+                //System.out.println(t);
+                todoList.add(t);
             }
-            
         } catch (FileNotFoundException fnfe) {
             System.err.println("File not found!");
         } catch (IOException ex) {
             System.err.println("IOE occured");
         }
+        
         listView.setItems(todoList);
-        comboBox.setItems(todoList);
-    }    
-
-    @FXML
-    private void handleAddFruitAction(ActionEvent event) {
-        String fruitName = fruitField.getText();
-        todoList.add(fruitName);
+        todoListView.setItems(todoItemList);
     }
 
     @FXML
     private void handleSelectItemAction(MouseEvent event) {
-        String text = listView.getSelectionModel().getSelectedItem();
-        fruitField.setText(text);
+        Todo t = listView.getSelectionModel().getSelectedItem();
+        //t.printDetails();
+        datePicker.setValue(t.getDate());
+        titleField.setText(t.getTitle());
+        
+        todoItemList.clear();
+        todoItemList.addAll(t.getTodoItemList());
+        
+        checkBoxVBox.getChildren().clear();
+        for (int i = 0; i < t.getCompletedItemList().size(); i++) {
+            String item = t.getCompletedItemList().get(i);
+            checkBoxVBox.getChildren().add(new CheckBox(item));
+        }
     }
-    
+
 }
