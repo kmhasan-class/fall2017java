@@ -15,13 +15,16 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 
 /**
  *
@@ -35,8 +38,6 @@ public class FXMLDocumentController implements Initializable {
     private ObservableList<String> todoList;
     private ObservableList<String> completedList;
     @FXML
-    private TextField itemField;
-    @FXML
     private DatePicker datePicker;
     @FXML
     private TextField titleField;
@@ -44,10 +45,8 @@ public class FXMLDocumentController implements Initializable {
     private ListView<String> todoListView;
     @FXML
     private ListView<String> completedListView;
-
     @FXML
-    public void handleAddItem(ActionEvent event) {
-    }
+    private VBox todoItemVBox;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -106,6 +105,21 @@ public class FXMLDocumentController implements Initializable {
             todoList.addAll(todo.getTodoItemList());
             completedList.clear();
             completedList.addAll(todo.getCompletedItemList());
+            
+            todoItemVBox.getChildren().clear();
+            for (int i = 0; i < todo.getTodoItemList().size(); i++) {
+                String s = todo.getTodoItemList().get(i);
+                CheckBox c = new CheckBox(s);
+                c.setSelected(true);
+                todoItemVBox.getChildren().add(c);
+                
+                // HINT: programmatically add event handler
+                // to the checkbox
+                c.setOnAction(click -> {
+                    System.out.println(c.getText());
+                    completedList.add(s);
+                });
+            }
         }
     }
 

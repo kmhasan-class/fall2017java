@@ -13,7 +13,15 @@
             <VBox layoutX="14.0" layoutY="14.0">
                <children>
                   <ListView fx:id="listView" layoutX="14.0" layoutY="14.0" onMouseClicked="#handleItemSelection" prefHeight="116.0" prefWidth="242.0" />
-                  <TextField fx:id="itemField" onAction="#handleAddItem" prefHeight="25.0" prefWidth="200.0" />
+                  <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <VBox fx:id="todoItemVBox" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
