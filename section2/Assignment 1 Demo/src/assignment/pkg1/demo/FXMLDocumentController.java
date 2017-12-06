@@ -103,7 +103,14 @@ public class FXMLDocumentController implements Initializable {
         checkBoxVBox.getChildren().clear();
         for (int i = 0; i < t.getCompletedItemList().size(); i++) {
             String item = t.getCompletedItemList().get(i);
-            checkBoxVBox.getChildren().add(new CheckBox(item));
+            CheckBox c = new CheckBox(item);
+            c.setSelected(true);
+            c.setOnAction(e -> {
+                checkBoxVBox.getChildren().remove(c);
+                todoItemList.add(item);
+                //System.out.println(item);
+            });
+            checkBoxVBox.getChildren().add(c);
         }
     }
 
