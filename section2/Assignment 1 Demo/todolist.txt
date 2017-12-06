@@ -15,4 +15,5 @@ Ask for problems
 Write solutions
 Arrange labs
 #
+Ask for approval of fund
 ##
