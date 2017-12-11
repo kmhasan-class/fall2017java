@@ -7,7 +7,9 @@ package db.console.demo;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -24,6 +26,24 @@ public class DBConsoleDemo {
         try {
             Connection connection = DriverManager.getConnection(DBURL, USERNAME, PASSWORD);
             System.out.println("Connection OKAY");
+            
+            Statement statement = connection.createStatement();
+            
+            /*
+            // inserting data
+            String query = "insert into todotask values(5, 'Buy prizes', 1);";
+            int row = statement.executeUpdate(query);
+            System.out.println("Rows affected " + row);
+            */
+            
+            // retrieving data
+            String query = "select id, task from todotask;";
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                int taskId = resultSet.getInt("id");
+                String taskName = resultSet.getString("task");
+                System.out.println(taskId + " " + taskName);
+            }
         } catch (SQLException sqle) {
             System.err.println(sqle);
         }
