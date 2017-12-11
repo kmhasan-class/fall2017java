@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 
 /**
  *
@@ -34,6 +35,10 @@ public class FXMLDocumentController implements Initializable {
     private final String PASSWORD = "pass";
     private final String DBNAME = "dummydb";
     private final String DBURL = "jdbc:mysql://" + HOSTNAME + "/" + DBNAME;
+    @FXML
+    private TextField studentIdField;
+    @FXML
+    private TextField studentNameField;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -56,4 +61,22 @@ public class FXMLDocumentController implements Initializable {
             System.err.println(sqle);
         }
     }    
+
+    @FXML
+    private void handleAddStudentAction(ActionEvent event) {
+        int studentId = Integer.parseInt(studentIdField.getText());
+        String studentName = studentNameField.getText();
+
+        String query = "insert into student values(" + studentId +", '" + studentName +"');";
+        try {
+            Connection c = DriverManager.getConnection(DBURL, USERNAME, PASSWORD);
+            Statement s = c.createStatement();
+            s.executeUpdate(query);
+
+            Student student = new Student(studentId, studentName);
+            studentList.add(student);
+        } catch (SQLException sqle) {
+            System.err.println(sqle);
+        }
+    }
 }
