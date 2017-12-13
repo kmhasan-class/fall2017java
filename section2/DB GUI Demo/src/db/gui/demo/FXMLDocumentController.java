@@ -14,6 +14,8 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,6 +25,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 /**
@@ -48,11 +52,39 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private ListView<TodoTask> todoTaskListView;
     private ObservableList<TodoTask> todoTaskList;
+    @FXML
+    private TableView<TodoTask> todoTaskTableView;
+    @FXML
+    private TableColumn<TodoTask, Number> taskIdColumn;
+    @FXML
+    private TableColumn<TodoTask, String> taskNameColumn;
+    @FXML
+    private TableColumn<TodoTask, Number> todoIDColumn;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         todoTaskList = FXCollections.observableArrayList();
         todoTaskListView.setItems(todoTaskList);
+        todoTaskTableView.setItems(todoTaskList);
+        
+        // lambda expression
+        // we need StringProperty instead of String
+        taskNameColumn
+            .setCellValueFactory(
+                data -> 
+                    new SimpleStringProperty(
+                        data.getValue().getTaskName()));
+        taskIdColumn
+            .setCellValueFactory(
+                data ->
+                    new SimpleIntegerProperty(
+                        data.getValue().getTaskId()));
+        
+        todoIDColumn
+            .setCellValueFactory(
+                data ->
+                    new SimpleIntegerProperty(
+                        data.getValue().getTodoId()));
         try {
             Connection connection = DriverManager.getConnection(DBURL, USERNAME, PASSWORD);
             statusLabel.setText("Connection OKAY");
