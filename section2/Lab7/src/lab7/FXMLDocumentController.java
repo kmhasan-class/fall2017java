@@ -32,7 +32,7 @@ public class FXMLDocumentController implements Initializable {
     private final String PASSWORD = "pass";
     private final String DBNAME = "dummydb";
     private final String HOSTNAME = "172.17.0.134";
-    private final String DBURL = "mysql:jdbc://" + HOSTNAME + "/" + DBNAME;
+    private final String DBURL = "jdbc:mysql://" + HOSTNAME + "/" + DBNAME;
     
     private Connection connection;
     private Statement statement;
@@ -57,7 +57,7 @@ public class FXMLDocumentController implements Initializable {
         unitTypeComboBox.setItems(FXCollections.observableArrayList(UnitType.values()));
         
         try {
-            Class.forName("com.mysql.jdbc.DriverManager").newInstance();
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
             connection = DriverManager.getConnection(DBURL, USERNAME, PASSWORD);
             System.out.println("Connection okay");
         } catch (SQLException ex) {
