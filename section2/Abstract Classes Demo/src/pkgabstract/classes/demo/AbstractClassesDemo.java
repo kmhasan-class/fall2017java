@@ -22,6 +22,7 @@ public class AbstractClassesDemo {
         // to refer to object of the subtype
         s1 = r;
        
+        // POLYMORPHISM
         Shape s2 = new Circle(10);
         
         System.out.println(s1);
