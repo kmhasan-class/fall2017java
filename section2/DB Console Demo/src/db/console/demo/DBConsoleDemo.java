@@ -16,7 +16,8 @@ import java.sql.Statement;
  * @author kmhasan
  */
 public class DBConsoleDemo {
-    private final String HOSTNAME = "172.17.0.134";
+    //private final String HOSTNAME = "172.17.0.134";
+    private final String HOSTNAME = "localhost";
     private final String DBNAME = "tododb";
     private final String USERNAME = "cse2015fall2017";
     private final String PASSWORD = "java";
