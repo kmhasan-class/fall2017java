@@ -47,7 +47,8 @@ public class FXMLDocumentController implements Initializable {
         gc.strokeLine(100, 160, 100, 260);
         gc.strokeLine(100, 260, 60, 320);
         
-        gc.strokeArc(60, 60, 80, 80, 200, 140, ArcType.OPEN);
+//        gc.strokeArc(60, 60, 80, 80, 200, 140, ArcType.OPEN);
+        gc.strokeArc(60, 100, 80, 80, 20, 140, ArcType.OPEN);
     }
     
     @Override
