@@ -5,6 +5,8 @@
  */
 package pkgabstract.classes.demo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author kmhasan
@@ -27,6 +29,21 @@ public class AbstractClassesDemo {
         
         System.out.println(s1);
         System.out.println(s2);
+        
+        ArrayList<Shape> shapeList = new ArrayList<>();
+        shapeList.add(new Circle(100));
+        shapeList.add(new Circle(15));
+        shapeList.add(new Circle(12));
+        shapeList.add(new Rectangle(20, 10));
+        shapeList.add(new Rectangle(20, 15));
+        
+        double totalArea = 0;
+        for (int i = 0; i < shapeList.size(); i++) {
+            totalArea = totalArea + shapeList.get(i).getArea();
+        }
+        
+        double averageArea = totalArea / shapeList.size();
+        System.out.println("Average area " + averageArea);
     }
     
 }
