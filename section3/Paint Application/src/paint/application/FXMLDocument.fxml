@@ -7,8 +7,42 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="paint.application.FXMLDocumentController">
+<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paint.application.FXMLDocumentController">
    <children>
-      <Canvas fx:id="drawingCanvas" height="500.0" layoutX="90.0" layoutY="24.0" width="600.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+      <VBox layoutX="10.0" layoutY="10.0">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                        <MenuItem mnemonicParsing="false" onAction="#handleFileOpenAction" text="Open" />
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <HBox layoutX="10.0" layoutY="10.0">
+               <children>
+                  <ToolBar orientation="VERTICAL" prefHeight="500.0" prefWidth="0.0">
+                     <items>
+                        <ColorPicker fx:id="colorPicker" onAction="#handleColorChangeAction" />
+                        <Slider fx:id="brushSizeSlider" prefHeight="16.0" prefWidth="47.0" />
+                     </items>
+                  </ToolBar>
+                  <Canvas fx:id="drawingCanvas" height="500.0" layoutX="90.0" layoutY="24.0" onMouseClicked="#handleMouseClick" onMouseDragged="#handleMouseDrag" onMouseReleased="#handleMouseRelease" width="600.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
